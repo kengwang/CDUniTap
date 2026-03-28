@@ -421,7 +421,7 @@ public partial class JiaoWuCliCommander : ICliCommander
             if (string.IsNullOrWhiteSpace(classRawInfo)) continue;
             // 使用正则匹配每个课程的信息
             const string pattern =
-                @"<span onmouseover='kbtc\(this\)' onmouseout='kbot\(this\)' class='box' style='[^']*'><p>[^<]*</p><p>([^<]*)</p><span class='text'>([^<]*)</span></span><div class='item-box' ><p>(\S*)</p><div class='tch-name'><span>(\S*)</span><span>([^<]*)</span></div><div><span><img src='/jsxsd/assets_v1/images/item1.png'>([^<]*)</span>";
+                @"<span onmouseover='kbtc\(this\)' onmouseout='kbot\(this\)' class='box' style='[^']*'><p>[^<]*</p><p>([^<]*)</p><span class='text'>([^<]*)</span></span><div class='item-box' ><p>(\S*)</p><div class='tch-name'><span>(\S*?)</span><span>([^<]*)</span></div><div><span><img src='/jsxsd/assets_v1/images/item1.png'>([^<]*)</span>";
             var match = ClassRawInfoRegex().Match(classRawInfo);
             var classInfo = new ClassInfo
             {

@@ -21,10 +21,11 @@ public class CasCliCommander : ICliCommander
     public async Task EnterCommander()
     {
         var isLogined = false;
+        var firstTry = true;
         while (!isLogined)
         {
             string? loginMode = null;
-            if (_casOptions.StudentId is not null)
+            if (_casOptions.StudentId is not null && firstTry)
                 loginMode = "自动登录";
             if (loginMode is null)
             {
@@ -75,6 +76,7 @@ public class CasCliCommander : ICliCommander
 
             if (!isLogined)
             {
+                firstTry = false;
                 AnsiConsole.MarkupLine("[red]用户登录失败, 请检查登录信息是否正确![/]");
             }
         }

@@ -69,7 +69,7 @@ public class JiaoWuServiceApi : IHttpApiServiceBase, ICasAuthenticatedApi
         ans.Xqids
             = Regex.Matches(sjmsResult, @"<option value="""">([\d-]*)</option>").ToList().Select(t => t.Groups[1].Value)
                 .ToList();
-        var matchedWeeks = Regex.Matches(sjmsResult, @"<option value=""([\d-]+)""\s*\S*>(.*)</option>").ToList();
+        var matchedWeeks = Regex.Matches(sjmsResult, @"<option value=""([\d-]+)""(?:.*)>(.*)</option>").ToList();
         foreach (var matchedWeek in matchedWeeks)
         {
             ans.AvalableWeeks[matchedWeek.Groups[2].Value] = matchedWeek.Groups[1].Value;
